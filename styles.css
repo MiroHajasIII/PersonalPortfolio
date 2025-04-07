@@ -1,0 +1,140 @@
+html {
+  height: 100%;
+  width: 100vw;
+  max-width: 100%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* background-color: rgba(9, 25, 47); */
+  animation: bg-colour-animation 3s infinite linear;
+  scroll-behavior: smooth;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* background-color: rgba(51, 51, 51, 0.7); */
+}
+
+#navbar ul {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+  margin: 0;
+  justify-content: flex-end;
+}
+
+#navbar ul li {
+  list-style: none;
+  display: flex;
+  text-transform: uppercase;
+  align-items: center;
+}
+
+#navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#resume-nav {
+  border: 2px solid #fff;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+#welcome {
+  padding: 20%;
+}
+
+.code-font {
+  font-family: Monospace, Roboto;
+  color: rgb(51, 212, 215, 0.8);
+}
+
+.base-text {
+  align-items: center;
+  font-family: Monospace, Roboto;
+  color: rgb(51, 212, 215, 0.8);
+}
+
+.primary-text {
+  margin-top: -5px;
+  margin-bottom: -15px;
+  font-size: 3rem;
+  color: rgb(152, 207, 231, 0.8);
+  font-family: Arial, sans;
+}
+
+.secondary-text {
+  font-size: 2.5rem;
+  color: rgb(74, 124, 140, 0.8);
+  font-family: Arial, sans;
+}
+
+#projects {
+  box-sizing: border-box;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20%;
+}
+
+#project-card-container {
+  display: flex;
+  gap: 75px;
+  width: 75vw;
+  max-width: 400px;
+}
+
+.project-cover-image {
+  max-width: 200px;
+  border-radius: 3%;
+  object-fit: cover;
+  position: relative;
+  width: 200px;
+  height: 175px;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+img {
+  box-shadow: 0;
+  transition: 0.15s;
+}
+
+img:hover {
+  box-shadow: 0 0 50px 4px rgba(51, 212, 215, 0.5);
+  transition: 0.15s; 
+}
+/* change picture for project 1 and carry on from here */
+
+/* ANIMATION FOR GRAY TO DARKGRAY BACKGROUND MOTION - TO BE USED LATER ON HERO SECTION BACKGROUND */
+
+@keyframes bg-colour-animation {
+  0% {
+    background-color: rgb(9, 25, 47);
+  }
+
+  20% {
+    background-color: rgb(5, 20, 40);
+  }
+
+  40% {
+    background-color: rgb(3, 15, 35);
+  }
+
+  60% {
+    background-color: rgb(5, 22, 45);
+  }
+
+  80% {
+    background-color: rgb(7, 30, 55);
+  }
+
+  100% {
+    background-color: rgb(9, 25, 47);
+  }
+}
