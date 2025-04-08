@@ -14,6 +14,7 @@ html {
   left: 0;
   width: 100%;
   /* background-color: rgba(51, 51, 51, 0.7); */
+  z-index: 999;
 }
 
 #navbar ul {
@@ -76,23 +77,27 @@ html {
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
-  padding: 20%;
+  padding: 0 20% 0 20%;
 }
 
 #project-card-container {
   display: flex;
+  justify-content: center;
   gap: 75px;
   width: 75vw;
   max-width: 400px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .project-cover-image {
-  max-width: 200px;
+  max-width: 300px;
   border-radius: 3%;
   object-fit: cover;
   position: relative;
-  width: 200px;
-  height: 175px;
+  width: 300px;
+  height: 275px;
 }
 
 .project-title {
@@ -109,9 +114,37 @@ img:hover {
   box-shadow: 0 0 50px 4px rgba(51, 212, 215, 0.5);
   transition: 0.15s; 
 }
+
+#contact {
+  box-sizing: border-box;
+  margin-top: 40vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5% 20%;
+  background-color: rgb(9, 47, 39);
+  border-radius: 8px;
+}
+
+#contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 80vw;
+}
+
+#contact-description-container {
+  
+  width: 50%;
+}
+
+#contact-links-container {
+  width: 50%;
+}
+
+
 /* change picture for project 1 and carry on from here */
 
-/* ANIMATION FOR GRAY TO DARKGRAY BACKGROUND MOTION - TO BE USED LATER ON HERO SECTION BACKGROUND */
+/* ANIMATION FOR GRAY TO DARKGRAY BACKGROUND MOTION */
 
 @keyframes bg-colour-animation {
   0% {
