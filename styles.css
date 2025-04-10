@@ -23,6 +23,7 @@ html {
   padding: 20px;
   margin: 0;
   justify-content: flex-end;
+  background: rgba(9, 47, 39, 0.5);
 }
 
 #navbar ul li {
@@ -35,6 +36,14 @@ html {
 #navbar ul li a {
   text-decoration: none;
   color: #fff;
+  transition: 0.1s;
+}
+
+#navbar ul li a:hover {
+  box-shadow: 0 0 50px 4px rgba(51, 212, 215, 0.5);
+  transition: 0.1s;
+  background: rgba(51, 212, 215, 0.14);
+  color: rgb(51, 212, 215, 0.8);
 }
 
 #resume-nav {
@@ -112,7 +121,7 @@ img {
 
 img:hover {
   box-shadow: 0 0 50px 4px rgba(51, 212, 215, 0.5);
-  transition: 0.15s; 
+  transition: 0.15s;
 }
 
 #contact {
@@ -121,20 +130,27 @@ img:hover {
   margin-left: auto;
   margin-right: auto;
   padding: 5% 20%;
-  background-color: rgb(9, 47, 39, 0.5);
+  background-color: rgba(9, 47, 39, 0.5);
   border-radius: 8px;
 }
 
 #contact-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: centre;
   gap: 10px;
   width: 80vw;
 }
 
 #contact-description-container {
-  
   width: 50%;
+}
+
+#contact-description-container h3 {
+  margin-bottom: 0;
+}
+
+#contact-description-container p {
+  margin-top: 0;
 }
 
 #contact-links-container {
@@ -150,6 +166,7 @@ img:hover {
   transition: 0.15s;
   object-fit: cover;
   background-position: center center;
+  image-rendering: crisp-edges;
 }
 
 /* change picture for project 1 and carry on from here */
