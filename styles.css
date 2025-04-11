@@ -155,11 +155,21 @@ img {
 
 #contact-links-container {
   width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#contact-links-container a {
+  display: inline-block;
+  width: auto;
 }
 
 .contact-image {
   width: 100px;
-  height: 130px;
+  height: auto;
   border-radius: 8px;
   position: relative;
   box-shadow: 0;
@@ -200,6 +210,10 @@ img {
 }
 
 @media screen and (max-width: 1000px) {
+  #welcome {
+    margin-top: 100px;
+  }
+  
   #project-card-container {
     flex-direction: column;
     align-items: center;
@@ -216,5 +230,20 @@ img {
 
   .base-text {
     text-align: centre;
+  }
+
+  .contact-image {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  #contact-links-container a {
+    display: inline-block;
+    width: 25%;
+    height: auto;
   }
 }
