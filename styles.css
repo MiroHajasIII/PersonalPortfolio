@@ -211,7 +211,7 @@ img {
 
 @media screen and (max-width: 1000px) {
   #welcome {
-    margin-top: 100px;
+    margin-top: 25vh;
   }
   
   #project-card-container {
