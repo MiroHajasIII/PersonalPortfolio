@@ -179,6 +179,11 @@ img {
   image-rendering: crisp-edges;
 }
 
+#attribution-link {
+  text-decoration: none;
+  color: rgb(51, 212, 215, 0.8);
+}
+
 /* change picture for project 1 and carry on from here */
 
 /* ANIMATION FOR GRAY TO DARKGRAY BACKGROUND MOTION */
