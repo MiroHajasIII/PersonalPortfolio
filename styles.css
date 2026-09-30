@@ -188,30 +188,23 @@ img {
 
 /* ANIMATION FOR GRAY TO DARKGRAY BACKGROUND MOTION */
 
-@keyframes bg-colour-animation {
-  0% {
-    background-color: rgb(9, 25, 47);
-  }
+html {
+  background-color: #0b0f14; /* fallback */
+}
 
-  20% {
-    background-color: rgb(5, 20, 40);
-  }
+#damascus {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  filter: url(#damascus-filter);
+}
 
-  40% {
-    background-color: rgb(3, 15, 35);
-  }
-
-  60% {
-    background-color: rgb(5, 22, 45);
-  }
-
-  80% {
-    background-color: rgb(7, 30, 55);
-  }
-
-  100% {
-    background-color: rgb(9, 25, 47);
-  }
+/* dark overlay so your teal text stays readable */
+#damascus::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 12, 20, 0.6);
 }
 
 @media screen and (max-width: 1000px) {
