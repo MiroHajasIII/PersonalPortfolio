@@ -1,8 +1,49 @@
-body {
-    font-family: "Outfit", sans-serif;
+/* =========================================================
+   Miro III | Portfolio - style.css
+
+   1.  Variables & base
+   2.  Background effects (stars + vignette)
+   3.  Layout (main grid, header, nav)
+   4.  Content sections & text helpers
+   5.  Hero & shared buttons
+   6.  About page components
+   7.  Cursor circle
+   8.  Projects page
+   9.  Contact page & form
+   10. Responsive & touch
+   ========================================================= */
+
+
+/* ---------- 1. Variables & base ---------- */
+:root {
+    --bg: #232a35;
+    --text: #f2f2f2;
+    --line-faint: rgba(255, 255, 255, 0.1);
+    --line: rgba(255, 255, 255, 0.15);
+    --line-soft: rgba(255, 255, 255, 0.3);
+    --line-bold: rgba(255, 255, 255, 0.5);
 }
 
-/* page vignette css */
+body {
+    font-family: "Outfit", sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+
+/* ---------- 2. Background effects ---------- */
+
+/* falling stars (canvas is created in main.js) */
+#stars {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* vignette */
 body::after {
     content: "";
     position: fixed;
@@ -16,6 +57,10 @@ body::after {
     );
 }
 
+
+/* ---------- 3. Layout ---------- */
+
+/* 1:2:1 grid, content sits in the middle column */
 main {
     display: grid;
     grid-template-columns: 1fr minmax(0, 2fr) 1fr;
@@ -28,9 +73,11 @@ main > * {
     grid-column: 2;
 }
 
+/* header overhangs the content column into the side walls */
 header {
-    margin: 5vh -8vw 0 -8vw; /* vw instead of vh, so it follows screen width */
+    margin: 5vh -8vw 0 -8vw;
 }
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -53,13 +100,41 @@ nav ul a {
     padding-bottom: 4px;
 }
 
+/* underline that grows in on hover */
+nav ul a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+nav ul a:hover::after,
+nav ul a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+#logo {
+    width: 60px;
+    height: 60px;
+    filter: invert(1); /* turns the black logo white */
+}
+
+
+/* ---------- 4. Content sections & text helpers ---------- */
 .content-section {
-    padding: 0 2rem 0 2rem;
-    margin: 4vh 0 4vh 0;
+    padding: 0 2rem;
+    margin: 4vh 0;
     border-left: 2px solid gray;
 }
 
-.content-section p, .content-section h2 {
+.content-section h2,
+.content-section p {
     margin: 0;
 }
 
@@ -83,18 +158,12 @@ nav ul a {
 }
 
 #cert-link:hover {
-    text-decoration: none;
     background-color: rgb(202, 202, 202);
-    color: rgb(0, 0, 0);
-    font-weight: 800;
+    color: black;
 }
 
-#logo {
-    width: 60px;
-    height: 60px;
-    filter: invert(1); /* turn the logo white instead of it's original black */
-}
 
+/* ---------- 5. Hero & shared buttons ---------- */
 #hero-name {
     text-transform: uppercase;
     letter-spacing: clamp(2px, 0.6vw, 8px);
@@ -107,22 +176,60 @@ nav ul a {
     padding: 1px;
 }
 
+#welcome p {
+    word-spacing: 0.3rem;
+}
+
 .page-hero {
     font-size: clamp(2.2rem, 8vw, 3.5rem);
 }
 
+.hero-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* pill button style shared by hero links and the form button */
+.hero-links a,
+button {
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 1px solid var(--line-bold);
+    border-radius: 999px;
+    padding: 0.6rem 1.5rem;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+button {
+    align-self: flex-start;
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.8rem;
+    cursor: pointer;
+}
+
+/* hover fill only on devices that can really hover (stops it sticking on touch) */
+@media (hover: hover) {
+    .hero-links a:hover,
+    button:hover {
+        background: #fff;
+        color: var(--bg);
+    }
+}
+
+
+/* ---------- 6. About page components ---------- */
 .playlist {
-    background-color:rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     padding: 10px;
     margin-top: 15px;
 }
 
 .playlist:hover {
-    background-color:rgba(165, 165, 165, 0.05);
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 15px;
+    background-color: rgba(165, 165, 165, 0.05);
 }
 
 .thumbnail {
@@ -133,11 +240,12 @@ nav ul a {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
 }
 
-/* hovering circle cursor code */
+
+/* ---------- 7. Cursor circle ---------- */
 .cursor-circle {
     position: fixed;
-    left: 0;
     top: 0;
+    left: 0;
     width: 40px;
     height: 40px;
     border: 1.5px solid rgba(255, 255, 255, 0.6);
@@ -153,23 +261,7 @@ nav ul a {
 }
 
 
-/* falling stars css */
-#stars {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-body {
-    background-color: #232a35;
-    color: #f2f2f2;
-}
-
-/* end of falling stars css */
-
+/* ---------- 8. Projects page ---------- */
 #projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -182,7 +274,7 @@ body {
     aspect-ratio: 16 / 10;
     overflow: hidden;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--line-faint);
     color: #fff;
     text-decoration: none;
 }
@@ -202,7 +294,12 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     padding: 1.5rem;
-    background: linear-gradient(to top, rgba(11, 14, 20, 0.92) 0%, rgba(11, 14, 20, 0.4) 60%, transparent 100%);
+    background: linear-gradient(
+        to top,
+        rgba(11, 14, 20, 0.92) 0%,
+        rgba(11, 14, 20, 0.4) 60%,
+        transparent 100%
+    );
     opacity: 0;
     transition: opacity 0.4s ease;
 }
@@ -234,7 +331,7 @@ body {
 
 .tags li {
     padding: 0.2rem 0.7rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--line-soft);
     border-radius: 999px;
 }
 
@@ -255,6 +352,7 @@ body {
 }
 
 
+/* ---------- 9. Contact page & form ---------- */
 .contact-list {
     list-style: none;
     padding: 0;
@@ -268,7 +366,7 @@ body {
 .contact-list a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid var(--line-soft);
     padding-bottom: 2px;
     transition: border-color 0.3s;
 }
@@ -294,7 +392,7 @@ textarea {
     font: inherit;
     color: inherit;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--line);
     border-radius: 8px;
     padding: 0.75rem 1rem;
     transition: border-color 0.3s;
@@ -306,26 +404,17 @@ textarea:focus {
     border-color: rgba(255, 255, 255, 0.6);
 }
 
-button {
-    align-self: flex-start;
-    margin-top: 1.5rem;
-    font: inherit;
-    color: inherit;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 999px;
-    padding: 0.7rem 1.8rem;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
+
+/* ---------- 10. Responsive & touch ---------- */
+
+/* small tablets and phones: projects go single column */
+@media (max-width: 768px) {
+    #projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-button:hover {
-    background: #fff;
-    color: #232a35;
-}
-
-
-/* tablets and phones css */
+/* tablets and phones: single column layout */
 @media (max-width: 900px) {
     main {
         grid-template-columns: minmax(0, 1fr);
@@ -370,21 +459,21 @@ button:hover {
 
     input,
     textarea {
-        font-size: 1rem; /* under 16px makes iPhones zoom in when you tap a field */
+        font-size: 1rem; /* under 16px makes iPhones zoom in on tap */
     }
 }
 
-/* no cursor on touch screens, so hide the circle */
+/* touch screens: no cursor circle, and project details always visible */
 @media (hover: none) {
     .cursor-circle {
         display: none;
     }
-}
 
-/* only apply the button fill on devices that can actually hover */
-@media (hover: hover) {
-    button:hover {
-        background: #fff;
-        color: #232a35;
+    .project-overlay {
+        opacity: 1;
+    }
+
+    .project-overlay > * {
+        transform: none;
     }
 }
