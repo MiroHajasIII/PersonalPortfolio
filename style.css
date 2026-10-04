@@ -21,6 +21,7 @@ main {
     grid-template-columns: 1fr minmax(0, 2fr) 1fr;
     align-content: start;
     min-height: 100vh;
+    min-height: 100dvh; /* accounts for mobile browser bars */
 }
 
 main > * {
@@ -28,9 +29,8 @@ main > * {
 }
 
 header {
-    margin: 5vh -15vh 0 -15vh;
+    margin: 5vh -8vw 0 -8vw; /* vw instead of vh, so it follows screen width */
 }
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -70,8 +70,23 @@ nav ul a {
 .text-meta {
     font-style: italic;
     font-weight: 800;
-    color: rgb(54, 54, 54);
+    color: rgb(223, 41, 41);
     word-spacing: 0.2vw;
+}
+
+#cert-link {
+    text-decoration: none;
+    background-color: rgb(105, 105, 105);
+    color: white;
+    font-weight: 800;
+    transition: 0.4s;
+}
+
+#cert-link:hover {
+    text-decoration: none;
+    background-color: rgb(202, 202, 202);
+    color: rgb(0, 0, 0);
+    font-weight: 800;
 }
 
 #logo {
@@ -82,8 +97,8 @@ nav ul a {
 
 #hero-name {
     text-transform: uppercase;
-    letter-spacing: 8px;
-    font-size: 3em;
+    letter-spacing: clamp(2px, 0.6vw, 8px);
+    font-size: clamp(1.8rem, 6vw, 3rem);
 }
 
 #hero-name span {
@@ -93,7 +108,7 @@ nav ul a {
 }
 
 .page-hero {
-    font-size: 3.5em;
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
 }
 
 .playlist {
@@ -101,6 +116,21 @@ nav ul a {
     border-radius: 10px;
     padding: 10px;
     margin-top: 15px;
+}
+
+.playlist:hover {
+    background-color:rgba(165, 165, 165, 0.05);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.thumbnail {
+    transition: 0.3s;
+}
+
+.thumbnail:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
 }
 
 /* hovering circle cursor code */
@@ -224,22 +254,6 @@ body {
     transform: scale(1.05);
 }
 
-/* touch devices can't hover, so always show the details */
-@media (hover: none) {
-    .project-overlay {
-        opacity: 1;
-    }
-
-    .project-overlay > * {
-        transform: none;
-    }
-}
-
-@media (max-width: 768px) {
-    #projects-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 .contact-list {
     list-style: none;
@@ -308,4 +322,69 @@ button {
 button:hover {
     background: #fff;
     color: #232a35;
+}
+
+
+/* tablets and phones css */
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 0 1.25rem;
+    }
+
+    main > * {
+        grid-column: 1;
+    }
+
+    header {
+        margin: 3vh 0 0 0; /* no overhang, or the page scrolls sideways */
+    }
+
+    nav {
+        margin-bottom: 6vh;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    nav ul a {
+        display: inline-block;
+        padding: 0.6rem 0.25rem; /* bigger tap area */
+    }
+
+    #logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .content-section {
+        padding: 0 0 0 1rem;
+        margin: 3vh 0;
+    }
+
+    .contact-list {
+        font-size: 1.1rem;
+        overflow-wrap: anywhere; /* stops long emails overflowing */
+    }
+
+    input,
+    textarea {
+        font-size: 1rem; /* under 16px makes iPhones zoom in when you tap a field */
+    }
+}
+
+/* no cursor on touch screens, so hide the circle */
+@media (hover: none) {
+    .cursor-circle {
+        display: none;
+    }
+}
+
+/* only apply the button fill on devices that can actually hover */
+@media (hover: hover) {
+    button:hover {
+        background: #fff;
+        color: #232a35;
+    }
 }

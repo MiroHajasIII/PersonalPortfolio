@@ -87,3 +87,25 @@ function draw() {
 window.addEventListener("resize", resize);
 resize();
 draw();
+
+
+// form completion replacement script
+const form = document.querySelector("#contact-form form");
+const formStatus = document.querySelector("#form-status");
+
+if (form) {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const data = new FormData(form);
+        const subject = encodeURIComponent(`Portfolio message from ${data.get("name")}`);
+        const body = encodeURIComponent(
+            `${data.get("message")}\n\nFrom: ${data.get("name")} (${data.get("email")})`
+        );
+
+        window.location.href = `mailto:mirohajas81@gmail.com?subject=${subject}&body=${body}`;
+
+        formStatus.textContent =
+            "Opening your email app. If nothing happens, you can email me directly at mirohajas81@gmail.com.";
+    });
+}
