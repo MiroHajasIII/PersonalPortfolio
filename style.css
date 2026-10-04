@@ -1,0 +1,242 @@
+body {
+    font-family: "Outfit", sans-serif;
+}
+
+/* page vignette css */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 2fr) 1fr;
+    align-content: start;
+    min-height: 100vh;
+}
+
+main > * {
+    grid-column: 2;
+}
+
+header {
+    margin: 5vh -15vh 0 -15vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul a {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    padding-bottom: 4px;
+}
+
+.content-section {
+    padding: 0 2rem 0 2rem;
+    margin: 4vh 0 4vh 0;
+    border-left: 2px solid gray;
+}
+
+.content-section p, .content-section h2 {
+    margin: 0;
+}
+
+.circle-emoji::before {
+    content: "\26AB ";
+}
+
+.text-meta {
+    font-style: italic;
+    font-weight: 800;
+    color: rgb(54, 54, 54);
+    word-spacing: 0.2vw;
+}
+
+#logo {
+    width: 60px;
+    height: 60px;
+    filter: invert(1); /* turn the logo white instead of it's original black */
+}
+
+#hero-name {
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    font-size: 3em;
+}
+
+#hero-name span {
+    background-color: rgb(172, 172, 172);
+    color: white;
+    padding: 1px;
+}
+
+.page-hero {
+    font-size: 3.5em;
+}
+
+.playlist {
+    background-color:rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+/* hovering circle cursor code */
+.cursor-circle {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cursor-circle.visible {
+    opacity: 1;
+}
+
+
+/* falling stars css */
+#stars {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+body {
+    background-color: #232a35;
+    color: #f2f2f2;
+}
+
+/* end of falling stars css */
+
+#projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.project-tile a {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+}
+
+.project-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(11, 14, 20, 0.92) 0%, rgba(11, 14, 20, 0.4) 60%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-overlay > * {
+    transform: translateY(12px);
+    transition: transform 0.4s ease;
+}
+
+.project-overlay h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.4rem;
+}
+
+.project-overlay p {
+    margin: 0 0 0.75rem;
+    opacity: 0.8;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.tags li {
+    padding: 0.2rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+}
+
+/* reveal on hover or keyboard focus */
+.project-tile a:hover .project-overlay,
+.project-tile a:focus-visible .project-overlay {
+    opacity: 1;
+}
+
+.project-tile a:hover .project-overlay > *,
+.project-tile a:focus-visible .project-overlay > * {
+    transform: translateY(0);
+}
+
+.project-tile a:hover img,
+.project-tile a:focus-visible img {
+    transform: scale(1.05);
+}
+
+/* touch devices can't hover, so always show the details */
+@media (hover: none) {
+    .project-overlay {
+        opacity: 1;
+    }
+
+    .project-overlay > * {
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
