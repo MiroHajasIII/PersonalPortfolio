@@ -33,8 +33,33 @@
             </nav>
         </header>
 
-        <section>
-            <h1 class="page-hero">Contact me.</h1>
+        <section id="contact-intro" class="content-section">
+            <h2>Let's talk.</h2>
+            <p>I'm open to chat, or for work, and normally reply withing 24 hours.</p>
+        </section>
+
+        <section id="contact-links" class="content-section">
+            <ul class="contact-list">
+                <li><a href="mailto:mirohajas81@gmail.com" target="_blank">mirohajas81@gmail.com</a></li>
+                <li><a href="https://github.com/MiroHajasIII" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/miro-hajas-iii" target="_blank">LinkedIn</a></li>
+            </ul>
+        </section>
+
+        <section id="contact-form" class="content-section">
+            <form action="[form service URL]" method="POST">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="john.d@gmail.com" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" placeholder="Nice website dude." required></textarea>
+
+                <button type="submit">Send message</button>
+            </form>
+            <p id="form-status" role="status"></p>
         </section>
     </main>
 
